@@ -6,8 +6,6 @@ import (
 
     "gorm.io/gorm"
     "gorm.io/driver/postgres"
-
-    "server/models"
 )
 
 func ConnectToDatabase() (*gorm.DB, error) {
@@ -20,8 +18,4 @@ func ConnectToDatabase() (*gorm.DB, error) {
     )
 
     return gorm.Open(postgres.Open(dsn), &gorm.Config{})
-}
-
-func Migrate(db *gorm.DB) error {
-    return db.AutoMigrate(models.GetAllModels())
 }
